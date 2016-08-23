@@ -1,0 +1,26 @@
+<html>
+<head>
+	<link rel="stylesheet" href="http://cdn.jsdelivr.net/emojione/2.2.6/assets/css/emojione.min.css"/>
+	<script   src="https://code.jquery.com/jquery-3.1.0.slim.min.js"   integrity="sha256-cRpWjoSOw5KcyIOaZNo4i6fZ9tKPhYYb6i5T9RSVJG8="   crossorigin="anonymous"></script>
+</head>
+	<body>
+		<input id="uni" type="text" placeholder="Enter unicode"/>
+		<input id="uni-btn" type="button" placeholder="Convert"/>
+		<div id="uni-res"></div>
+		<script src="http://cdn.jsdelivr.net/emojione/2.2.6/lib/js/emojione.min.js"></script>
+		<script type="text/javascript">
+		var morphEmo = localStorage.getItem('morphEmo');
+		if(morphEmo){
+			$('#uni-res').append(morphEmo);
+		}else{
+			morphEmo = '';
+		}
+			$('#uni-btn').click(function(){
+				var uni = $('#uni').val();
+				morphEmo += '<div>'+uni+'&nbsp - &nbsp'+emojione.shortnameToUnicode(uni)+'</div>';
+				$('#uni-res').append('<div>'+uni+'&nbsp - &nbsp'+emojione.shortnameToUnicode(uni)+'</div>');
+				localStorage.setItem('morphEmo', morphEmo);
+			});
+		</script>
+	</body>
+</html>
